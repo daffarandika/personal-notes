@@ -20,6 +20,11 @@ input, textarea {
   border-radius: 4px;
 }
 
+input:hover, textarea:hover{
+  border: 1px solid limegreen;
+  border-radius: 4px;
+}
+
 input::placeholder, textarea::placeholder {
   color: #aaa;
   font-weight: bold;
@@ -61,6 +66,11 @@ input::placeholder, textarea::placeholder {
   display: block;
   width: 100%;
   resize: none;
+}
+
+.note-input button:hover {
+  color: #202124;
+  background-color: limegreen;
 }
 
 .note-input__title {
@@ -111,6 +121,11 @@ input::placeholder, textarea::placeholder {
   flex-direction: column;
 }
 
+.note-item:hover {
+  transform: translate(7px, -7px);
+  box-shadow:-7px 7px #ffffff;
+}
+
 .note-item__content {
   padding: 12px;
   flex: 1;
@@ -159,11 +174,13 @@ input::placeholder, textarea::placeholder {
 }
 
 .note-item__archive-button:hover {
-  color: #c49000;
+  color: #202124;
+  background-color: #fff263;
 }
 
 .note-item__delete-button:hover {
-  color: #b00020;
+  color: #202124;
+  background-color: #ff5f52;
 }
 
 @media only screen and (min-width: 500px) {
