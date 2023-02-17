@@ -60,6 +60,7 @@ input::placeholder, textarea::placeholder {
 .note-input input, .note-input textarea {
   display: block;
   width: 100%;
+  resize: none;
 }
 
 .note-input__title {
