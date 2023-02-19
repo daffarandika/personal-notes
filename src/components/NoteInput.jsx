@@ -1,4 +1,3 @@
-
 import React from 'react'
 import NoteSearch from './NoteSearch'
 
@@ -7,10 +6,13 @@ export default class NoteAppInput extends React.Component{
     super(props)
     this.state = {
       noteTitle: '',
+      noteBody: '',
       charLeft: 50
     }
 
-    this.onNoteTitleChangeHandler = this.onNoteTitleChangeHandler.bind(this)
+    this.onNoteTitleChangeHandler = this.onNoteTitleChangeHandler.bind(this);
+    this.onNoteBodyChangeHandler = this.onNoteBodyChangeHandler.bind(this);
+    this.onInsertClicked = this.onInsertClicked.bind(this);
   }
 
   onNoteTitleChangeHandler(event) {
@@ -22,15 +24,39 @@ export default class NoteAppInput extends React.Component{
     })
   }
 
+  onNoteBodyChangeHandler(event) {
+    this.setState((prevState) => {
+      return {
+        noteBody: event.target.value
+      }
+    })
+  }
+
+  onInsertClicked(event) {
+    event.preventDefault();
+    this.props.addNote({
+      title: this.state.noteTitle,
+      body: this.state.noteBody,
+      createdAt: new Date(),
+      archived: false
+    })
+    this.setState(() => {
+      return {
+        noteTitle: '',
+        noteBody: ''
+      }
+    })
+  }
+
   render() {
     return(
-      <div className="note-input">
+      <form className="note-input" onSubmit={this.onInsertClicked}>
         <h2 className="note-input__title">Buat Catatan</h2>
         <p className="note-input__title__char-limit">Sisa karakter: {this.state.charLeft}</p>
         <input type="text" value={this.state.noteTitle} onChange={this.onNoteTitleChangeHandler}/>
-        <textarea placeholder="hai" rows="10"></textarea>
-        <button>BUAT</button>
-      </div>
+        <textarea placeholder="hai" value={this.state.noteBody} onChange={this.onNoteBodyChangeHandler} rows="10"></textarea>
+        <button type="submit">BUAT</button>
+      </form>
     )
   }
 }

@@ -53,4 +53,19 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString("id-ID", options)
 }
 
-export { getInitialData, showFormattedDate };
+function wasCreatedToday(date) {
+  const today = new Date();
+  return date.getDate() == today.getDate() &&
+    date.getMonth() == today.getMonth() &&
+    date.getFullYear() == today.getFullYear()
+}
+
+
+function wasCreatedThisWeek(date) {
+  const today = new Date();
+  const firstDayOfTheWeek = today.getDate() - today.getDay() + 1;
+  const lastDayOfTheWeek = today.getDate() - today.getDay() + 7;
+  return today > firstDayOfTheWeek && today < lastDayOfTheWeek;
+}
+
+export { getInitialData, showFormattedDate, wasCreatedToday, wasCreatedThisWeek };

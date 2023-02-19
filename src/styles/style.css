@@ -20,11 +20,6 @@ input, textarea {
   border-radius: 4px;
 }
 
-input:hover, textarea:hover{
-  border: 1px solid limegreen;
-  border-radius: 4px;
-}
-
 input::placeholder, textarea::placeholder {
   color: #aaa;
   font-weight: bold;
@@ -101,6 +96,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .notes-list {
+  outline: solid black 1px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(min-content, max-content);
@@ -121,9 +117,22 @@ input::placeholder, textarea::placeholder {
   flex-direction: column;
 }
 
+.note-list__container {
+  margin: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 .note-item:hover {
   transform: translate(7px, -7px);
   box-shadow:-7px 7px #ffffff;
+}
+
+.hide {
+  display: none;
 }
 
 .note-item__content {

@@ -10,7 +10,7 @@ export default class NoteAppHeader extends React.Component{
     return(
       <div className="note-app__header">
         <h1>Notes</h1>
-        <NoteSearch />
+        <NoteSearch onSearchHandler={this.props.onSearchHandler}/>
       </div>
     )
   }

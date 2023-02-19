@@ -1,6 +1,7 @@
 import React from 'react'
 import NoteInput from './NoteInput'
-import NoteList from './NoteList'
+import NoteListActive from './NoteListActive'
+import NoteListArchived from './NoteListArchived'
 
 export default class NoteApp extends React.Component {
   constructor(props) {
@@ -9,15 +10,12 @@ export default class NoteApp extends React.Component {
 
   render() {
     const activeNotes = this.props.activeNotes;
-    const archivedNotes = this.props.nonActiveNotes;
+    const archivedNotes = this.props.archivedNotes;
     return (
       <div className="note-app__body">
-        <NoteInput />
-        <h2>Catatan Aktif</h2>
-        <p style={{visibility: 
-            (activeNotes.length === 0) ? "visible" : "hidden"
-          }} className="notes-list__empty-message">Tidak ada</p>
-        <NoteList notes={activeNotes} id={this.props.id} onArchiveClicked={this.props.onArchiveClicked}/>
+        <NoteInput addNote={this.props.addNote} />
+        <NoteListActive title="Catatan Aktif" notes={activeNotes} id={this.props.id} onArchiveClicked={this.props.onArchiveClicked} onDeleteHandler={this.props.onDeleteHandler}/>
+        <NoteListArchived title="Catatan Arsip" notes={archivedNotes} id={this.props.id} onUnarchiveClicked={this.props.onUnarchiveClicked} onDeleteHandler={this.props.onDeleteHandler}/>
       </div>
     )
   }
